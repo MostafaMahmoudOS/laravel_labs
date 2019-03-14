@@ -28,7 +28,7 @@ class PostsController extends Controller
         ]);
     }
    
-    public function store(StorePostRequest $request)
+    public function store(StoreStorePostRequestPostRequest $request)
     {
         Post::create($request->all());
 
@@ -50,9 +50,7 @@ class PostsController extends Controller
     public function update(UpdatePostRequest $request, $post)
     {    //dd($request);
         Post::find($post) -> update($request -> all());
-        return view('posts.index', [
-            'posts' => Post::paginate(2),'updated'=>TRUE
-        ]);
+        return redirect()->route('posts.index');
         
     }
     public function destroy( $post)
